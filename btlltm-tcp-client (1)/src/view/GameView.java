@@ -41,6 +41,7 @@ public class GameView extends JFrame {
     }
     public GameView(){
         this.setName("penalty");
+        shotTaken = false;
         dialog = new JDialog(this, "Notify", false);
         lb = new JLabel();
         dialog.add(lb);
@@ -136,7 +137,7 @@ public class GameView extends JFrame {
                 if (JOptionPane.showConfirmDialog(GameView.this, "Are you sure want to leave game? You will lose?", "LEAVE GAME", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
                     ClientRun.socketHandler.leaveGame(competitor);
                     ClientRun.socketHandler.setRoomIdPresent(null);
-                    dispose();
+                    ClientRun.closeScene(ClientRun.SceneName.GAMEVIEW);
                 }
             }
         });
@@ -217,10 +218,16 @@ public class GameView extends JFrame {
             public void actionPerformed(ActionEvent e){
                 time.setText("Time: "+t);
                 t--;
-                if(t==0 || run){
-                    time.setText("Time's Up");
+                if(run){
                     timeLeft.stop();
                     t = 10;
+                }
+                if(t<0 && !shotTaken){
+                    ClientRun.socketHandler.leaveGame(competitor);
+                    ClientRun.socketHandler.setRoomIdPresent(null);
+                    ClientRun.closeScene(ClientRun.SceneName.GAMEVIEW);
+                    JOptionPane.showMessageDialog(ClientRun.homeView, "You didn't pick! You lose!");
+                    timeLeft.stop();
                 }
             }
         });

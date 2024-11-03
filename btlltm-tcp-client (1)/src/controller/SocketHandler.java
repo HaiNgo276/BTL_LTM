@@ -524,7 +524,7 @@ public class SocketHandler {
             String user2 = splitted[3];
             roomIdPresent = null;
             ClientRun.closeScene(ClientRun.SceneName.GAMEVIEW);   
-            JOptionPane.showMessageDialog(ClientRun.homeView, user1 + " leave to game!");
+            JOptionPane.showMessageDialog(ClientRun.homeView, user1 + " leave to game! You win!");
         }
     }
      

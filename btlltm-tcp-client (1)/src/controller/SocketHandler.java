@@ -580,6 +580,7 @@ public class SocketHandler {
             }
         }
     }
+
     
     private void onReceiveAskPlayAgain(String received) {
         // get status from data

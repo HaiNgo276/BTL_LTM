@@ -27,7 +27,8 @@ public class ServerRun {
         try {
             int port = 2000;
 
-            ss = new ServerSocket(port, 0, InetAddress.getByName("10.21.31.207"));
+//            ss = new ServerSocket(port, 0, InetAddress.getByName("10.20.137.129"));
+            ss = new ServerSocket(port);
             System.out.println("Created Server at port " + port + ".");
             
             // init managers

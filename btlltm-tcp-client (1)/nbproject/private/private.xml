@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Game_LTM_C/btlltm-tcp-client%20(1)/src/controller/SocketHandler.java</file>
-            <file>file:/C:/Game_LTM_C/btlltm-tcp-client%20(1)/src/view/HomeView.java</file>
+            <file>file:/C:/BTL_LTM/btlltm-tcp-client%20(1)/src/run/ClientRun.java</file>
+            <file>file:/C:/BTL_LTM/btlltm-tcp-client%20(1)/src/view/HomeView.java</file>
+            <file>file:/C:/BTL_LTM/btlltm-tcp-client%20(1)/src/controller/SocketHandler.java</file>
         </group>
     </open-files>
 </project-private>

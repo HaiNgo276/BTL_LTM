@@ -37,8 +37,11 @@ public class RankingView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Ranking");
+
+        jScrollPane1.setForeground(new java.awt.Color(102, 102, 102));
 
         jTbRanking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,7 +56,8 @@ public class RankingView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTbRanking);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 255));
         jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

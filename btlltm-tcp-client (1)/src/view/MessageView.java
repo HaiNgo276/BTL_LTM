@@ -79,6 +79,8 @@ public class MessageView extends javax.swing.JFrame {
             }
         });
 
+        btnSend.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSend.setForeground(new java.awt.Color(0, 0, 204));
         btnSend.setText("Send");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,12 +93,14 @@ public class MessageView extends javax.swing.JFrame {
         contentChat.setRows(5);
         jScrollPane1.setViewportView(contentChat);
 
-        infoUserChat.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        infoUserChat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        infoUserChat.setForeground(new java.awt.Color(102, 102, 102));
         infoUserChat.setText("Chat with:");
 
-        btnLeaveChat.setBackground(new java.awt.Color(255, 102, 0));
+        btnLeaveChat.setBackground(new java.awt.Color(255, 0, 51));
+        btnLeaveChat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLeaveChat.setForeground(new java.awt.Color(204, 255, 255));
-        btnLeaveChat.setText("Leave chat");
+        btnLeaveChat.setText("Leave ");
         btnLeaveChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeaveChatActionPerformed(evt);
@@ -113,19 +117,18 @@ public class MessageView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(infoUserChat, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLeaveChat, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(tfMessage)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnLeaveChat))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(tfMessage)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(infoUserChat, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(btnLeaveChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

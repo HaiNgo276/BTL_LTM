@@ -28,7 +28,6 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tfUsername = new javax.swing.JTextField();
@@ -40,36 +39,34 @@ public class LoginView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(500, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg-login.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 20, -1, 347));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Login");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 13, 150, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 74, 30));
-        getContentPane().add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 170, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 74, 30));
+        getContentPane().add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 142, 170, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 74, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 74, 30));
 
         tfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 170, -1));
+        getContentPane().add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 192, 170, 30));
 
-        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(0, 0, 255));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -77,9 +74,9 @@ public class LoginView extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 120, 30));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 110, 40));
 
-        btnChangeRegister.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnChangeRegister.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnChangeRegister.setForeground(new java.awt.Color(0, 0, 255));
         btnChangeRegister.setText("Register");
         btnChangeRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +84,7 @@ public class LoginView extends javax.swing.JFrame {
                 btnChangeRegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(btnChangeRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 110, 30));
+        getContentPane().add(btnChangeRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 90, -1));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, 30));
 
         pack();
@@ -123,7 +120,6 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField tfPassword;
     private javax.swing.JTextField tfUsername;

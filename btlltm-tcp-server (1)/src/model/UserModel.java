@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class UserModel implements Serializable {
     private static final long serialVersionUID = 1L;
-	
+
+    private int userId; // Thêm thuộc tính userId
     private String userName;
     private String password;
     private String status;
@@ -14,31 +15,41 @@ public class UserModel implements Serializable {
     private int lose;
     private float avgCompetitor;
     private float avgTime;
-    
+
     public UserModel() { }
-    
-    public UserModel(String userName, String password, String status) {
-    	super();
+
+    public UserModel(int userId, String userName, String password, String status) {
+        super();
+        this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.status = status;
     }
-    
+
     public UserModel(String userName, String password, float score) {
-    	super();
+        super();
         this.userName = userName;
         this.password = password;
         this.score = score;
     }
-    
+
     public UserModel(String userName, String password, String status, float score) {
-    	super();
+        super();
         this.userName = userName;
         this.password = password;
         this.status = status;
         this.score = score;
     }
-    
+
+    // Getter và Setter cho userId
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -54,13 +65,13 @@ public class UserModel implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String password) {
-        this.status = password;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public float getScore() {
@@ -110,6 +121,4 @@ public class UserModel implements Serializable {
     public void setAvgTime(float avgTime) {
         this.avgTime = avgTime;
     }
-
-    
 }

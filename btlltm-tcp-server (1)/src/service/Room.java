@@ -1,13 +1,16 @@
 package service;
 
+import controller.MatchHistoryController;
 import controller.UserController;
 import helper.CountDownTimer;
 import helper.CustumDateTimeFormatter;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import model.MatchHistoryModel;
 import model.UserModel;
 import run.ServerRun;
 
@@ -59,6 +62,40 @@ public class Room {
             },
             1
         );
+    }
+    public void endGame(String result) {
+        Date dateTime = new Date(); // Capture the end time
+        
+        float player1Score;
+        float player2Score;
+
+        if (result.equals("DRAW")) {
+            player1Score = (float) 0.5; 
+            player2Score = (float) 0.5;  
+        } else {
+            // Nếu có kết quả thắng/thua, tính điểm cho người thắng (1 điểm) và người thua (0 điểm)
+            player1Score = (result.equals(client1.getLoginUser())) ? 1 : 0;
+            player2Score = (result.equals(client2.getLoginUser())) ? 1 : 0;
+        }
+        
+        int player1Id = new UserController().getUserIdByUsername(client1.getLoginUser());
+        int player2Id = new UserController().getUserIdByUsername(client2.getLoginUser());
+        // Create match history with scores and times
+        MatchHistoryModel matchHistory = new MatchHistoryModel(
+            player1Id, player2Id,
+            client1.getLoginUser(), player1Score,
+            client2.getLoginUser(), player2Score,
+            dateTime
+        );
+
+        MatchHistoryController matchHistoryController = new MatchHistoryController();
+        boolean saved = matchHistoryController.saveMatchHistory(matchHistory);
+
+        if (saved) {
+            System.out.println("Match history saved successfully.");
+        } else {
+            System.out.println("Failed to save match history.");
+        }
     }
     
     public void waitingClientTimer() {
@@ -183,6 +220,8 @@ public class Room {
         
         new UserController().updateUser(user1);
         new UserController().updateUser(user2);
+        
+        endGame("DRAW");
     }
     
     public void client1Win() throws SQLException {
@@ -209,6 +248,8 @@ public class Room {
         
         new UserController().updateUser(user1);
         new UserController().updateUser(user2);
+        
+        endGame(client1.getLoginUser());
     }
     
     public void client2Win() throws SQLException {
@@ -235,6 +276,8 @@ public class Room {
         
         new UserController().updateUser(user1);
         new UserController().updateUser(user2);
+        
+        endGame(client2.getLoginUser());
     }
     
     public void userLeaveGame (String username) throws SQLException {

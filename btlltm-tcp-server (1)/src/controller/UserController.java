@@ -109,6 +109,7 @@ public class UserController {
         }
         return users;
     }
+    
     public String getInfoUser(String username) {
         UserModel user = new UserModel();
         try {
@@ -132,6 +133,25 @@ public class UserController {
         return null;
     }
     
+    public int getUserIdByUsername(String username) {
+        
+        String query = "SELECT userId FROM users WHERE username = ?";
+    
+        try {
+            PreparedStatement p = con.prepareStatement(query);
+            p.setString(1, username);
+            ResultSet rs = p.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("userId");
+            } else {
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
     public boolean updateUser(UserModel user) throws SQLException {
         boolean rowUpdated;
         PreparedStatement p = con.prepareStatement(UPDATE_USER);

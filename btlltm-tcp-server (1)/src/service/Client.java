@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import run.ServerRun;
-import helper.Question;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -116,9 +115,6 @@ public class Client implements Runnable {
                         break;
                     case "CHECK_STATUS_USER":
                         onReceiveCheckStatusUser(received);
-                        break;
-                    case "START_GAME":
-                        onReceiveStartGame(received);
                         break;
                     case "SUBMIT_RESULT":
                         onReceiveSubmitResult(received);
@@ -491,21 +487,7 @@ public synchronized void sendFiles(String action, List<String> filePaths, List<S
         sendData("CHECK_STATUS_USER" + ";" + username + ";" + status);
     }
             
-    private void onReceiveStartGame(String received) {
-        String[] splitted = received.split(";");
-        String user1 = splitted[1];
-        String user2 = splitted[2];
-        String roomId = splitted[3];
-        
-        String question = Question.renQuestion();
-        System.out.println("Receive Start Data: "+ question);
-        
-        String data = "START_GAME;success;" + roomId + "-" + question;
-        // Send question here
-        joinedRoom.resetRoom();
-        joinedRoom.broadcastFile(data);
-//        joinedRoom.startGame();
-    } 
+    
     
     private void onReceiveSubmitResult(String received) throws SQLException {
         String[] splitted = received.split(";");

@@ -3,10 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- * Author: nddmanh
- * Created: Oct 18, 2021
- */
+
 
 CREATE DATABASE  IF NOT EXISTS `btlltm`;
 
@@ -20,8 +17,6 @@ CREATE TABLE `btlltm`.`users` (
     `win` INT NOT NULL,
     `draw` INT NOT NULL,
     `lose` INT NOT NULL,
-    `avgCompetitor` FLOAT NOT NULL,
-    `avgTime` FLOAT NOT NULL,
     PRIMARY KEY (`userId`));
     
 CREATE TABLE match_history (

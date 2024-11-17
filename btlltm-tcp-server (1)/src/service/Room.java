@@ -209,15 +209,6 @@ public class Room {
         int totalMatchUser1 = user1.getWin() + user1.getDraw() + user1.getLose();
         int totalMatchUser2 = user2.getWin() + user2.getDraw() + user2.getLose();
         
-        float newAvgCompetitor1 = (totalMatchUser1 * user1.getAvgCompetitor() + user2.getScore()) / (totalMatchUser1 + 1);
-        float newAvgCompetitor2 = (totalMatchUser2 * user1.getAvgCompetitor() + user1.getScore()) / (totalMatchUser2 + 1);
-        
-        newAvgCompetitor1 = Math.round(newAvgCompetitor1 * 100) / 100;
-        newAvgCompetitor2 = Math.round(newAvgCompetitor2 * 100) / 100;
-        
-        user1.setAvgCompetitor(newAvgCompetitor1);
-        user2.setAvgCompetitor(newAvgCompetitor2);
-        
         new UserController().updateUser(user1);
         new UserController().updateUser(user2);
         
@@ -235,16 +226,6 @@ public class Room {
         
         int totalMatchUser1 = user1.getWin() + user1.getDraw() + user1.getLose();
         int totalMatchUser2 = user2.getWin() + user2.getDraw() + user2.getLose();
-        
-        float newAvgCompetitor1 = (totalMatchUser1 * user1.getAvgCompetitor() + user2.getScore()) / (totalMatchUser1 + 1);
-        float newAvgCompetitor2 = (totalMatchUser2 * user1.getAvgCompetitor() + user1.getScore()) / (totalMatchUser2 + 1);
-        
-        user1.setAvgCompetitor(newAvgCompetitor1);
-        user2.setAvgCompetitor(newAvgCompetitor2);
-        
-//        float newAvgTime1 = (totalMatchUser1 * user1.getAvgTime() + time) / (totalMatchUser1 + 1);
-//        System.out.println("newAvgTime1: " + newAvgTime1);
-//        user1.setAvgTime(newAvgTime1);
         
         new UserController().updateUser(user1);
         new UserController().updateUser(user2);
@@ -264,16 +245,6 @@ public class Room {
         int totalMatchUser1 = user1.getWin() + user1.getDraw() + user1.getLose();
         int totalMatchUser2 = user2.getWin() + user2.getDraw() + user2.getLose();
         
-        float newAvgCompetitor1 = (totalMatchUser1 * user1.getAvgCompetitor() + user2.getScore()) / (totalMatchUser1 + 1);
-        float newAvgCompetitor2 = (totalMatchUser2 * user1.getAvgCompetitor() + user1.getScore()) / (totalMatchUser2 + 1);
-        
-        user1.setAvgCompetitor(newAvgCompetitor1);
-        user2.setAvgCompetitor(newAvgCompetitor2);
-        
-//        float newAvgTime2 = (totalMatchUser2 * user2.getAvgTime() + time) / (totalMatchUser2 + 1);
-//        System.out.println("newAvgTime2: " + newAvgTime2);
-//        user2.setAvgTime(newAvgTime2);
-        
         new UserController().updateUser(user1);
         new UserController().updateUser(user2);
         
@@ -285,24 +256,6 @@ public class Room {
             client2Win();
         } else if (client2.getLoginUser().equals(username)) {
             client1Win();
-        }
-    }
-    
-    public String handlePlayAgain () {
-        if (playAgainC1 == null || playAgainC2 == null) {
-            return "NO";
-        } else if (playAgainC1.equals("YES") && playAgainC2.equals("YES")) {
-            return "YES";
-        } else if (playAgainC1.equals("NO") && playAgainC2.equals("YES")) {
-//            ServerRun.clientManager.sendToAClient(client2.getLoginUser(), "ASK_PLAY_AGAIN;NO");
-//            deleteRoom();
-            return "NO";
-        } else if (playAgainC2.equals("NO") && playAgainC2.equals("YES")) {
-//            ServerRun.clientManager.sendToAClient(client1.getLoginUser(), "ASK_PLAY_AGAIN;NO");
-//            deleteRoom();
-            return "NO";
-        } else {
-            return "NO";
         }
     }
     

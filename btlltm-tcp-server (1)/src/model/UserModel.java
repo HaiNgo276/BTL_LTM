@@ -13,8 +13,6 @@ public class UserModel implements Serializable {
     private int win;
     private int draw;
     private int lose;
-    private float avgCompetitor;
-    private float avgTime;
 
     public UserModel() { }
 
@@ -104,21 +102,5 @@ public class UserModel implements Serializable {
 
     public void setLose(int lose) {
         this.lose = lose;
-    }
-
-    public float getAvgCompetitor() {
-        return avgCompetitor;
-    }
-
-    public void setAvgCompetitor(float avgCompetitor) {
-        this.avgCompetitor = avgCompetitor;
-    }
-
-    public float getAvgTime() {
-        return avgTime;
-    }
-
-    public void setAvgTime(float avgTime) {
-        this.avgTime = avgTime;
     }
 }

@@ -133,11 +133,7 @@ public class SocketHandler {
                         break;
                     case "RESULT_GAME":
                         onReceiveResultGame(received);
-                        break;
-                    case "ASK_PLAY_AGAIN":
-                        onReceiveAskPlayAgain(received);
-                        break;
-                        
+                        break;     
                     case "EXIT":
                         running = false;
                 }
@@ -340,9 +336,7 @@ public class SocketHandler {
             String userWin =  splitted[4];
             String userDraw =  splitted[5];
             String userLose =  splitted[6];
-            String userAvgCompetitor =  splitted[7];
-            String userAvgTime =  splitted[8];
-            String userStatus = splitted[9];
+            String userStatus = splitted[7];
             
             ClientRun.openScene(ClientRun.SceneName.INFOPLAYER);
             ClientRun.infoPlayerView.setInfoUser(userName, userScore, userWin, userDraw, userLose, userStatus);
@@ -581,22 +575,6 @@ public class SocketHandler {
         }
     }
 
-    
-    private void onReceiveAskPlayAgain(String received) {
-        // get status from data
-        String[] splitted = received.split(";");
-        String status = splitted[1], result = splitted[2];
-        if(status.equals("success")){
-            ClientRun.closeScene(ClientRun.SceneName.GAMEVIEW);
-            if(result.equals("1")){
-                JOptionPane.showMessageDialog(ClientRun.homeView, "You win!");
-            }
-            else{
-                JOptionPane.showMessageDialog(ClientRun.homeView, "You lose!");
-            }
-        }
-    }  
-    
     // get set
     public String getLoginUser() {
         return loginUser;

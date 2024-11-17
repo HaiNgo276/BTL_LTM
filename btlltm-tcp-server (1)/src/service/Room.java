@@ -2,8 +2,6 @@ package service;
 
 import controller.MatchHistoryController;
 import controller.UserController;
-import helper.CountDownTimer;
-import helper.CustumDateTimeFormatter;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,8 +19,6 @@ public class Room {
     ArrayList<Client> clients = new ArrayList<>();
     
     boolean gameStarted = false;
-    CountDownTimer matchTimer;
-    CountDownTimer waitingTimer;
     
     String resultClient1;
     String resultClient2;
@@ -42,27 +38,6 @@ public class Room {
         return gameStarted;
     }
 
-    public void startGame(int t) {
-        gameStarted = true;
-        
-        matchTimer = new CountDownTimer(t);
-        matchTimer.setTimerCallBack(
-            null,
-            (Callable) () -> {
-                time = "" + CustumDateTimeFormatter.secondsToMinutes(matchTimer.getCurrentTick());
-                System.out.println(time);
-                if (time.equals("00:00")) {
-//                    waitingClientTimer();
-                    if (resultClient1 == null && resultClient2 == null) {
-                        draw();
-                        broadcast("RESULT_GAME;success;DRAW;" + client1.getLoginUser() + ";" + client2.getLoginUser() + ";" + id);
-                    } 
-                }
-                return null;
-            },
-            1
-        );
-    }
     public void endGame(String result) {
         Date dateTime = new Date(); // Capture the end time
         
@@ -97,26 +72,7 @@ public class Room {
             System.out.println("Failed to save match history.");
         }
     }
-    
-    public void waitingClientTimer() {
-        waitingTimer = new CountDownTimer(12);
-        waitingTimer.setTimerCallBack(
-            null,
-            (Callable) () -> {
-                waitingTime = "" + CustumDateTimeFormatter.secondsToMinutes(waitingTimer.getCurrentTick());
-                System.out.println("waiting: " + waitingTime);
-                if (waitingTime.equals("00:00")) {
-                    if (playAgainC1 == null && playAgainC2 == null) {
-                        broadcast("ASK_PLAY_AGAIN;NO");
-                        deleteRoom();
-                    } 
-                }
-                return null;
-            },
-            1
-        );
-    }
-    
+       
     public void deleteRoom () {
         client1.setJoinedRoom(null);
         client1.setcCompetitor(null);

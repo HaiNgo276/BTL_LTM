@@ -22,15 +22,15 @@ import model.UserModel;
  */
 public class UserController {
     //  SQL
-    private final String INSERT_USER = "INSERT INTO users (username, password, score, win, draw, lose, avgCompetitor, avgTime) VALUES (?, ?, 0, 0, 0, 0, 0, 0)";
+    private final String INSERT_USER = "INSERT INTO users (username, password, score, win, draw, lose) VALUES (?, ?, 0, 0, 0, 0)";
     
     private final String CHECK_USER = "SELECT userId from users WHERE username = ? limit 1";
     
     private final String LOGIN_USER = "SELECT username, password, score FROM users WHERE username=? AND password=?";
     
-    private final String GET_INFO_USER = "SELECT username, password, score, win, draw, lose, avgCompetitor, avgTime FROM users WHERE username=?";
+    private final String GET_INFO_USER = "SELECT username, password, score, win, draw, lose FROM users WHERE username=?";
     
-    private final String UPDATE_USER = "UPDATE users SET score = ?, win = ?, draw = ?, lose = ?, avgCompetitor = ?, avgTime = ? WHERE username=?";
+    private final String UPDATE_USER = "UPDATE users SET score = ?, win = ?, draw = ?, lose = ? WHERE username=?";
     //  Instance
     private final Connection con;
     
@@ -123,10 +123,8 @@ public class UserController {
                 user.setWin(r.getInt("win"));
                 user.setDraw(r.getInt("draw"));
                 user.setLose(r.getInt("lose"));
-                user.setAvgCompetitor(r.getFloat("avgCompetitor"));
-                user.setAvgTime(r.getFloat("avgTime"));
             }
-            return "success;" + user.getUserName() + ";" + user.getScore() + ";" + user.getWin() + ";" + user.getDraw() + ";" + user.getLose() + ";" + user.getAvgCompetitor() + ";" + user.getAvgTime() ;
+            return "success;" + user.getUserName() + ";" + user.getScore() + ";" + user.getWin() + ";" + user.getDraw() + ";" + user.getLose();
         } catch (SQLException e) {
             e.printStackTrace();
         }   
@@ -160,9 +158,7 @@ public class UserController {
         p.setInt(2, user.getWin());
         p.setInt(3, user.getDraw());
         p.setInt(4, user.getLose());
-        p.setFloat(5, user.getAvgCompetitor());
-        p.setFloat(6, user.getAvgTime());
-        p.setString(7, user.getUserName());
+        p.setString(5, user.getUserName());
 
 //            ResultSet r = p.executeQuery();
         rowUpdated = p.executeUpdate() > 0;
@@ -182,8 +178,6 @@ public class UserController {
                 user.setWin(r.getInt("win"));
                 user.setDraw(r.getInt("draw"));
                 user.setLose(r.getInt("lose"));
-                user.setAvgCompetitor(r.getFloat("avgCompetitor"));
-                user.setAvgTime(r.getFloat("avgTime"));
             }
             return user;
         } catch (SQLException e) {

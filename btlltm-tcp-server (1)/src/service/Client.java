@@ -119,9 +119,9 @@ public class Client implements Runnable {
                     case "SUBMIT_RESULT":
                         onReceiveSubmitResult(received);
                         break;
-                    case "ASK_PLAY_AGAIN":
-                        onReceiveAskPlayAgain(received);
-                        break;
+//                    case "ASK_PLAY_AGAIN":
+//                        onReceiveAskPlayAgain(received);
+//                        break;
                         
                     case "EXIT":
                         running = false;
@@ -536,43 +536,43 @@ public synchronized void sendFiles(String action, List<String> filePaths, List<S
         }
     } 
     
-    private void onReceiveAskPlayAgain(String received) throws SQLException {
-        String[] splitted = received.split(";");
-        String reply = splitted[1];
-        String user1 = splitted[2];
-        
-        System.out.println("client1: " + joinedRoom.getClient1().getLoginUser());
-        System.out.println("client2: " + joinedRoom.getClient2().getLoginUser());
-        
-        if (user1.equals(joinedRoom.getClient1().getLoginUser())) {
-            joinedRoom.setPlayAgainC1(reply);
-        } else if (user1.equals(joinedRoom.getClient2().getLoginUser())) {
-            joinedRoom.setPlayAgainC2(reply);
-        }
-        
-        while (!joinedRoom.getWaitingTime().equals("00:00")) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        String result = this.joinedRoom.handlePlayAgain();
-        if (result.equals("YES")) {
-            joinedRoom.broadcast("ASK_PLAY_AGAIN;YES;" + joinedRoom.getClient1().loginUser + ";" + joinedRoom.getClient2().loginUser);
-        } else if (result.equals("NO")) {
-            joinedRoom.broadcast("ASK_PLAY_AGAIN;NO;");
-            
-            Room room = ServerRun.roomManager.find(joinedRoom.getId());
-            // delete room            
-            ServerRun.roomManager.remove(room);
-            this.joinedRoom = null;
-            this.cCompetitor = null;
-        } else if (result == null) {
-            System.out.println("da co loi xay ra huhu");
-        }
-    }
+//    private void onReceiveAskPlayAgain(String received) throws SQLException {
+//        String[] splitted = received.split(";");
+//        String reply = splitted[1];
+//        String user1 = splitted[2];
+//        
+//        System.out.println("client1: " + joinedRoom.getClient1().getLoginUser());
+//        System.out.println("client2: " + joinedRoom.getClient2().getLoginUser());
+//        
+//        if (user1.equals(joinedRoom.getClient1().getLoginUser())) {
+//            joinedRoom.setPlayAgainC1(reply);
+//        } else if (user1.equals(joinedRoom.getClient2().getLoginUser())) {
+//            joinedRoom.setPlayAgainC2(reply);
+//        }
+//        
+//        while (!joinedRoom.getWaitingTime().equals("00:00")) {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        } 
+//        
+//        String result = this.joinedRoom.handlePlayAgain();
+//        if (result.equals("YES")) {
+//            joinedRoom.broadcast("ASK_PLAY_AGAIN;YES;" + joinedRoom.getClient1().loginUser + ";" + joinedRoom.getClient2().loginUser);
+//        } else if (result.equals("NO")) {
+//            joinedRoom.broadcast("ASK_PLAY_AGAIN;NO;");
+//            
+//            Room room = ServerRun.roomManager.find(joinedRoom.getId());
+//            // delete room            
+//            ServerRun.roomManager.remove(room);
+//            this.joinedRoom = null;
+//            this.cCompetitor = null;
+//        } else if (result == null) {
+//            System.out.println("da co loi xay ra huhu");
+//        }
+//    }
         
     
     // Close app

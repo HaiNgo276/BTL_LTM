@@ -214,13 +214,13 @@ public class GameView extends JFrame {
     }
     public void startCountTime(){
         timeLeft.addActionListener(new ActionListener(){
-            int t = 10;
+            int t = 30;
             public void actionPerformed(ActionEvent e){
                 time.setText("Time: "+t);
                 t--;
                 if(run){
                     timeLeft.stop();
-                    t = 10;
+                    t = 30;
                 }
                 if(t<0 && !shotTaken){
                     ClientRun.socketHandler.leaveGame(competitor);
